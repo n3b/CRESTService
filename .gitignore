@@ -1,4 +1,10 @@
 
 .DS_Store
 
-.idea/.name
+.idea
+
+CRESTService.xcodeproj
+
+CRESTService/CRESTService.1
+
+CRESTService/main.c
