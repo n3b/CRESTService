@@ -160,7 +160,7 @@ CFSocketError CRESTServiceStopListen()
 	dispatch_release(socketReadQueue);
 	dispatch_release(socketAcceptQueue);
 
-	CFRelease(callbacks);
+	if( callbacks )	CFRelease(callbacks);
 	listener = NULL;
 	callbacks = NULL;
 	
