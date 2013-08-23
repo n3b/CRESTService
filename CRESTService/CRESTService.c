@@ -129,11 +129,10 @@ CFSocketError CRESTServiceStartListenOnPort(UInt16 port)
 
 	if( kCFSocketSuccess == err ) {
 
-		dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-		listener->source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, (uintptr_t)listener->fd, 0, queue);
+		listener->source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, (uintptr_t)listener->fd, 0,
+				dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
 		dispatch_source_set_event_handler(listener->source, ^{ onSocketAccept(); });
 
-		dispatch_release(queue);
 		dispatch_resume(listener->source);
 
 		return kCFSocketSuccess;
